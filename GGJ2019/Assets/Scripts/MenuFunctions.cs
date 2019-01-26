@@ -5,20 +5,29 @@ using UnityEngine.SceneManagement;
 
 public class MenuFunctions : Singleton<MenuFunctions>
 {
-    [SerializeField]
-    private int _maxLevel = 3;
-
     /// <summary>
-    /// Load the next scene level. Don't use on the last level (max level), instead transition to game win scene
+    /// Load the next or prev scene level. Pass in the CHANGE in the level, not the level to move to
     /// </summary>
-    public void LoadNextLevel()
+    public void LoadLevel(int diff)
     {
         string sceneName = SceneManager.GetActiveScene().name;
         int levelNumber = 1;
-        System.Int32.TryParse(sceneName[sceneName.Length - 1].ToString(), out levelNumber);
-        string levelSceneName = "Level" + levelNumber.ToString();
+        bool currentSceneIsLevel = System.Int32.TryParse(sceneName[sceneName.Length - 1].ToString(), out levelNumber);
+        levelNumber += diff;
+        if (levelNumber >= GameManager.Instance.MaxLevel || levelNumber <= 0)
+        {
+            LoadMainMenuScene();
+            return;
+        }
 
-        SceneManager.LoadScene("Level" + levelNumber);
+        string levelSceneName = "Level" + levelNumber.ToString();
+        GameManager.Instance.CurrentLevel = levelNumber;
+        SceneManager.LoadScene(levelSceneName);
+    }
+
+    public void LoadMainMenuScene()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void QuitGame()

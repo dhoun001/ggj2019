@@ -31,9 +31,9 @@ public class MainMenu : MonoBehaviour
         GameManager.Instance.petName = _petNameInput.text;
     }
 
-    public void LoadLevel()
+    public void LoadNext()
     {
-        MenuFunctions.Instance.LoadNextLevel();
+        MenuFunctions.Instance.LoadLevel(1);
     }
 
     public void QuitGame()

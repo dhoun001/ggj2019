@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
+    public int MaxLevel = 3;
+    public int CurrentLevel = 0;
+    public bool IsAtLastLevel { get { return CurrentLevel >= MaxLevel; } }
+
     public string petName = "Pet Name";
 
     public void StartRun()
