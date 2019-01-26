@@ -227,7 +227,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00012207031, y: -0.20996094}
+  m_AnchoredPosition: {x: 0.00024414062, y: -0.20996094}
   m_SizeDelta: {x: -0.00012207, y: 0.42004}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &183385599
@@ -1232,6 +1232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainMenuScreen: {fileID: 183385597}
   _choosePetScreen: {fileID: 461778433}
+  _petNameInput: {fileID: 0}
 --- !u!1 &1207017473
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,6 +1534,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1108299601}
         m_MethodName: LoadLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1108299601}
+        m_MethodName: SetPetName
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

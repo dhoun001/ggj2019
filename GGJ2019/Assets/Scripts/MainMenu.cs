@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField]
     private GameObject _choosePetScreen;
+
+    [SerializeField]
+    private InputField _petNameInput;
 
     public void ChoosePetName()
     {
@@ -20,6 +24,11 @@ public class MainMenu : MonoBehaviour
     {
         _mainMenuScreen.gameObject.SetActive(true);
         _choosePetScreen.gameObject.SetActive(false);
+    }
+
+    public void SetPetName()
+    {
+        GameManager.Instance.petName = _petNameInput.text;
     }
 
     public void LoadLevel()
