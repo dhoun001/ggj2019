@@ -20,6 +20,7 @@ public class GameManager : Singleton<GameManager>
     public void RestartRun()
     {
         //TODO: return all inventory items to hotbar
+        //TODO: reenable inventory
         //TODO: Reset cat to starting position
         //TODO: reset all other prop data
     }

@@ -7,21 +7,32 @@ public class ObjectPooler : MonoBehaviour
 
     // Setting variables
     public GameObject pooledObject;
+    // Container to put your pool your objects in. If empty, it will create its own.
+    public GameObject containerObject;
     public int pooledAmount;
+    //Determines whether or not you want the game objects to spawn as active game objects
+    public bool startActive = false;
 
     private GameObject poolContainer;
-    List<GameObject> pooledObjects = new List<GameObject>();
+    protected List<GameObject> pooledObjects = new List<GameObject>();
 
     // Use this for initialization
-    void Start()
+    protected void Start()
     {
-        poolContainer = new GameObject();
-        poolContainer.name = pooledObject.name + " Container";
+        if(!containerObject)
+        {
+            poolContainer = new GameObject();
+            poolContainer.name = pooledObject.name + " Container";
+            containerObject = poolContainer;
+        }
+        else
+        {
+            poolContainer = containerObject;
+        }
         for (int i = 0; i < pooledAmount; i++)
         {
-            GameObject obj = (GameObject)Instantiate(pooledObject);
-            obj.transform.parent = poolContainer.transform;
-            obj.SetActive(false);
+            GameObject obj = (GameObject)Instantiate(pooledObject, poolContainer.transform);
+            obj.SetActive(startActive);
             pooledObjects.Add(obj);
         }
     }
