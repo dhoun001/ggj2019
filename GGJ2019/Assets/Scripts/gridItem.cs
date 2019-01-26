@@ -7,7 +7,7 @@ using UnityEngine.Tilemaps;
 public class gridItem : MonoBehaviour {
 
     [SerializeField]
-    public static int priority = 0;
+    public int priority = 0;
 
     public virtual void OnSeenByCat()
     {
