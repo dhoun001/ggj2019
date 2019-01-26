@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 
-public class gridItem : TileBase {
+public class gridItem : MonoBehaviour {
 
     [SerializeField]
     public static int priority = 0;
