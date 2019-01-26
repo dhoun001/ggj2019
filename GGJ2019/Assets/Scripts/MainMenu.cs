@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField]
+    private string _defaultPetName = "Mackerel";
+
+    [SerializeField]
     private GameObject _mainMenuScreen;
 
     [SerializeField]
@@ -28,7 +31,12 @@ public class MainMenu : MonoBehaviour
 
     public void SetPetName()
     {
-        GameManager.Instance.petName = _petNameInput.text;
+        string petName = _petNameInput.text;
+        if (petName == "")
+        {
+            petName = _defaultPetName;
+        }
+        GameManager.Instance.petName = petName;
     }
 
     public void LoadNext()
