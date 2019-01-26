@@ -7,13 +7,12 @@ public class interactableObj : MonoBehaviour {
     [SerializeField]
     public static int priority = 0;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
+    void Awake () {
+
+    }
+
 	// Update is called once per frame
 	void Update () {
-		
+	    
 	}
 }
