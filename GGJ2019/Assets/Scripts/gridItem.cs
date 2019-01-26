@@ -9,6 +9,16 @@ public class gridItem : MonoBehaviour {
     [SerializeField]
     public static int priority = 0;
 
+    public virtual void OnSeenByCat()
+    {
+
+    }
+
+    public virtual void OnArrive()
+    {
+
+    }
+
     void Awake () {
 
     }
