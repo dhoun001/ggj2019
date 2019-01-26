@@ -14,7 +14,7 @@ public class ObjectPooler : MonoBehaviour
     public bool startActive = false;
 
     private GameObject poolContainer;
-    List<GameObject> pooledObjects = new List<GameObject>();
+    protected List<GameObject> pooledObjects = new List<GameObject>();
 
     // Use this for initialization
     protected void Start()
