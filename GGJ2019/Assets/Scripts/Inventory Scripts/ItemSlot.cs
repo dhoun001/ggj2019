@@ -90,6 +90,8 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             {
                 Debug.Log("Tile is on blocker.");
             }
+
+            //Right now the only way that the item gets destroyed is if its in the trigger of the blockers
             GameManager.Instance.currentBlockerTileMap.GetComponent<Ground>().DestroyItems();
             draggingObject = null;
             canDrag = isSlotted ? true : false;
