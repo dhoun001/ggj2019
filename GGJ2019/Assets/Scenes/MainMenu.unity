@@ -1308,7 +1308,7 @@ MonoBehaviour:
   _defaultPetName: Mackerel
   _mainMenuScreen: {fileID: 183385597}
   _choosePetScreen: {fileID: 461778433}
-  _petNameInput: {fileID: 0}
+  _petNameInput: {fileID: 1691482328}
 --- !u!1 &1207017473
 GameObject:
   m_ObjectHideFlags: 0
