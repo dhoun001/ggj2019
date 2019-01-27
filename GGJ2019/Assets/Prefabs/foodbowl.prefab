@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3904388478373286227}
   - component: {fileID: 2519234286627006891}
   - component: {fileID: 3424140808791252008}
+  - component: {fileID: 6768712924962563814}
   m_Layer: 0
   m_Name: foodbowl
   m_TagString: Untagged
@@ -92,3 +93,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f44f02ac16733644b71bb6ec74e8523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priority: 0
+--- !u!114 &6768712924962563814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5972278084666803365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c4a52b03d152824484ee5895dc1fa8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortOnUpdate: 0
