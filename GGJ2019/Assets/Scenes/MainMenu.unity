@@ -476,7 +476,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &461778434
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1435,7 +1435,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enter Text
+  m_Text: Mackerel
 --- !u!222 &1065533167
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1563,7 +1563,7 @@ MonoBehaviour:
   _defaultPetName: Mackerel
   _mainMenuScreen: {fileID: 183385597}
   _choosePetScreen: {fileID: 461778433}
-  _petNameInput: {fileID: 0}
+  _petNameInput: {fileID: 1817979379}
 --- !u!82 &1108299602
 AudioSource:
   m_ObjectHideFlags: 0
