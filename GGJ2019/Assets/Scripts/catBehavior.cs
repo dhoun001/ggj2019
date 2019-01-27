@@ -20,22 +20,15 @@ public class catBehavior : MonoBehaviour {
     }
 
     Vector3 getPriority(){
-        Vector3 catPos = gameObject.GetComponentInParent<GridLayout>().WorldToCell(gameObject.transform.position);
+        Vector3Int catPos = gameObject.GetComponentInParent<GridLayout>().WorldToCell(gameObject.transform.position);
         gridItem[] arrItem = FindObjectsOfType<gridItem>();
-        for(int i = 0; i < arrItem.Length; ++i){
+        float[] itemDis = new float[arrItem.Length];
+        
+        for (int i = 0; i < arrItem.Length; ++i){
             Vector3 itemWorld = arrItem[i].gameObject.transform.position;
-            Debug.Log(itemWorld);
-            /*
-            if (Mathf.Abs(itemWorld.x) - range <= Mathf.Abs(catPos.x)){
-                Debug.Log("Hello");
-                if (Mathf.Abs(itemWorld.y) - range <= Mathf.Abs(catPos.y)){//TODO: must fix later, testing functionality first. breaks when itemworld is negative and cat pos is positive and vice versa.
-                    Debug.Log("Hello");
-                    highestP = arrItem[i].priority;
-                    highestPriority = arrItem[i].GetComponentInParent<Tilemap>().WorldToCell(arrItem[i].gameObject.transform.position);
-                    Debug.Log(highestPriority);
-                }
-            }
-            */
+            Vector3Int itemCell = gameObject.GetComponentInParent<GridLayout>().WorldToCell(itemWorld);
+            itemDis[i] = Vector3.Distance(catPos, itemCell);
+            
             if (arrItem[i].priority > highestP)
             {
                 highestP = arrItem[i].priority;
@@ -47,7 +40,6 @@ public class catBehavior : MonoBehaviour {
 
     void move(){
         Vector3 destination = getPriority();
-        Debug.Log(destination);
         gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, destination, .01f);
         highestP = 0;
     }

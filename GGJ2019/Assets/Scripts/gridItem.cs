@@ -9,6 +9,9 @@ public class gridItem : MonoBehaviour {
     [SerializeField]
     public int priority = 0;
 
+    public bool isWall = false;
+    public bool isElevated = false;
+
     public virtual void OnSeenByCat()
     {
 
