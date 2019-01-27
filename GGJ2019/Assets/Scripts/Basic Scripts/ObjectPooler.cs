@@ -15,11 +15,18 @@ public class ObjectPooler : MonoBehaviour
 
     private GameObject poolContainer;
     protected List<GameObject> pooledObjects = new List<GameObject>();
+    protected bool toggleOn = false;
 
     // Use this for initialization
     protected void Start()
     {
-        if(!containerObject)
+
+    }
+
+    public void GenerateObjects()
+    {
+        Debug.Log("Initializing!");
+        if (!containerObject)
         {
             poolContainer = new GameObject();
             poolContainer.name = pooledObject.name + " Container";

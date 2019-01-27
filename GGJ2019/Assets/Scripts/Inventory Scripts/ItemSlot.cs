@@ -80,16 +80,17 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             foreach (gridItem item in interactableObjects)
             {
                 Vector3Int itemCellPos = GameManager.Instance.currentBlockerTileMap.WorldToCell(item.transform.position);
-                if (itemCellPos == cellPos)
+                if (itemCellPos == cellPos && item.name != draggingObject.name)
                 {
                     Debug.LogWarning("Item blocked by an interactable object.");
                     ReturnItemToInventory();
                 }
             }
+            GameManager.Instance.placedObjects.Add(draggingObject);
             draggingObject.GetComponent<DraggableItem>().ToggleHitBox();
             draggingObject = null;
             canDrag = isSlotted ? true : false;
-            Debug.Log("Done dragging.");
+            Debug.Log("Object placed!");
         }
 
     }
@@ -108,6 +109,7 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     /// </summary>
     public void ReturnItemToInventory()
     {
+        GameManager.Instance.placedObjects.Remove(draggingObject);
         Destroy(draggingObject);
         Inventory.Instance.AddItem(draggingObject.GetComponent<DraggableItem>().itemType);
     }

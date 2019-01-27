@@ -32,6 +32,20 @@ public class Inventory : Singleton<Inventory>
     public void Initialize()
     {
         display.Initalize(itemList.Count);
+        PopulateItems();
+    }
+
+    public void FlushItems()
+    {
+        foreach (Item item in items)
+        {
+            display.Remove(item.itemType);
+        }
+        items.Clear();
+    }
+
+    public void PopulateItems()
+    {
         foreach (InventoryItem item in itemList)
         {
             Item newItem = new Item(item.type, item.quantity);

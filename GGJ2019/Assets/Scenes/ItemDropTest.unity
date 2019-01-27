@@ -1319,18 +1319,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapType: 1
   colliderObject: {fileID: 0}
---- !u!114 &1001512776 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1481141754911135791, guid: 2ad372cee3407d64087e2e9ec52d8dd1,
-    type: 3}
-  m_PrefabInstance: {fileID: 1226754492}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 965b1c0989d98dd46a099ff334720363, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1203094654
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1411,57 +1399,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1203094654}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1222024217
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1222024219}
-  - component: {fileID: 1222024218}
-  m_Layer: 0
-  m_Name: Player
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1222024218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222024217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb2d412a6c0917b4dbe0c00bbd4f2b7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  display: {fileID: 1001512776}
-  itemList:
-  - type: 0
-    quantity: 5
-  - type: 1
-    quantity: 3
-  - type: 2
-    quantity: 3
---- !u!4 &1222024219
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222024217}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.20596, y: 12.2014675, z: 68.52832}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1226754492
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1618,6 +1555,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 138
+      objectReference: {fileID: 0}
+    - target: {fileID: 1481141754911135788, guid: 2ad372cee3407d64087e2e9ec52d8dd1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7134217527500919832, guid: 2ad372cee3407d64087e2e9ec52d8dd1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1820970339}
+    - target: {fileID: 7134217527500919832, guid: 2ad372cee3407d64087e2e9ec52d8dd1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartRun
+      objectReference: {fileID: 0}
+    - target: {fileID: 371062246, guid: 2ad372cee3407d64087e2e9ec52d8dd1, type: 3}
+      propertyPath: itemList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 371062246, guid: 2ad372cee3407d64087e2e9ec52d8dd1, type: 3}
+      propertyPath: itemList.Array.data[2].type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 371062246, guid: 2ad372cee3407d64087e2e9ec52d8dd1, type: 3}
+      propertyPath: itemList.Array.data[0].quantity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 371062246, guid: 2ad372cee3407d64087e2e9ec52d8dd1, type: 3}
+      propertyPath: itemList.Array.data[1].quantity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 371062246, guid: 2ad372cee3407d64087e2e9ec52d8dd1, type: 3}
+      propertyPath: itemList.Array.data[2].quantity
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ad372cee3407d64087e2e9ec52d8dd1, type: 3}
@@ -3217,6 +3189,7 @@ MonoBehaviour:
   CurrentLevel: 0
   currentGroundTileMap: {fileID: 0}
   currentBlockerTileMap: {fileID: 0}
+  placedObjects: []
   petName: Pet Name
 --- !u!4 &1820970340
 Transform:
@@ -3230,7 +3203,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1839735485 &3590940330394654838
 Tilemap:

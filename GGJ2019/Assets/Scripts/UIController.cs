@@ -15,6 +15,12 @@ public class UIController : Singleton<UIController>
     private Button _restartButton;
 
     public bool inLoseState = false;
+    private catBehavior catBehavior;
+
+    private void Awake()
+    {
+        catBehavior = GameObject.FindGameObjectWithTag("Player").GetComponent<catBehavior>();
+    }
 
     public void Fade(float a)
     {
@@ -46,8 +52,10 @@ public class UIController : Singleton<UIController>
     {
         //TODO: show lose message
         _messegeLog.text = "Uh oh! Press Restart!";
+        catBehavior.HaltCat();
         //TODO: flash Restart button
         //TODO: at this point, ensure player cannot win level unless they restart
         inLoseState = true;
+
     }
 }

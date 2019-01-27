@@ -11,6 +11,7 @@ public class GameManager : Singleton<GameManager>
     public bool IsAtLastLevel { get { return CurrentLevel >= MaxLevel; } }
     public Tilemap currentGroundTileMap;
     public Tilemap currentBlockerTileMap;
+    public List<GameObject> placedObjects;
 
     public string petName = "Pet Name";
 
@@ -22,9 +23,18 @@ public class GameManager : Singleton<GameManager>
 
     public void RestartRun()
     {
-        //TODO: return all inventory items to hotbar
+        if(placedObjects.Count == 0 )
+        {
+            return;
+        }
+        foreach (GameObject obj in placedObjects)
+        {
+            Destroy(obj);
+        }
+        placedObjects.Clear();
+        Inventory.Instance.FlushItems();
+        Inventory.Instance.PopulateItems();
         //TODO: reenable inventory
         //TODO: Reset cat to starting position
-        //TODO: reset all other prop data
     }
 }

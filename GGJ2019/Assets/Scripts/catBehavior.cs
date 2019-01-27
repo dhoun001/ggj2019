@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class catBehavior : MonoBehaviour {
     
     //private Vector3 startingPos = gameObject.transform.position;
-    [SerializeField] private float speed = 5f;
+    public float speed = 5f;
 
     private Animator _catAnimator;
     private Vector3 startCatPos;
@@ -44,6 +44,11 @@ public class catBehavior : MonoBehaviour {
             }
         }
         return closest;
+    }
+
+    public void HaltCat()
+    {
+        StopAllCoroutines();
     }
 
     private bool CheckCanSee(gridItem item)
