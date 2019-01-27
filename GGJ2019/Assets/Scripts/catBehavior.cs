@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using DG.Tweening;
 
 public class catBehavior : MonoBehaviour {
     
@@ -18,7 +19,7 @@ public class catBehavior : MonoBehaviour {
 
     void Awake(){
         arrItem = FindObjectsOfType<gridItem>();
-        StartCoroutine("moving");
+        moving();
     }
 
     // Update is called once per frame
@@ -41,22 +42,13 @@ public class catBehavior : MonoBehaviour {
         return calculation.findTarget();
     }
 
-    IEnumerator moving()
+    private void moving()
     {
-        Vector3 destination = getPriority();
-        Vector3 position = gameObject.transform.position;
-        //Debug.Log(destination);
-        //Debug.Log(position);
-        //Vector3Int desCell = gameObject.GetComponentInParent<GridLayout>().WorldToCell(destination);
-        //Vector3Int posCell = gameObject.GetComponentInParent<GridLayout>().WorldToCell(gameObject.transform.position);
-        while (Vector3.Distance(transform.position, destination) > 0.001f){
-            //interpolating = true;
-            //Debug.Log(desCell);
-            //Debug.Log(gameObject.GetComponentInParent<GridLayout>().WorldToCell(gameObject.transform.position));
-            gameObject.transform.position = Vector3.Lerp(position, destination, Time.deltaTime * speed);
-            //posCell = gameObject.GetComponentInParent<GridLayout>().WorldToCell(gameObject.transform.position);
-            yield return null;
+        //Check to see if valid space, if so:
+        if (true)
+        {
+            Vector3 destination = getPriority();
+            transform.DOMove(destination, 5f).onComplete += moving;
         }
-        interpolating = false;
     }
 }
