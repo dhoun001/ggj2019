@@ -20,24 +20,29 @@ public class Pillow : MonoBehaviour
     void Update()
     {
         if (triggered)
-            timer -= Time.deltaTime;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.name == "cat")
         {
-            instance.speed = instance.speed / 2;
-            while (timer > 0)
-            {
-                triggered = true;
-            }
+            timer -= Time.deltaTime;
             if (timer <= 0)
             {
                 triggered = false;
                 instance.speed = catSpeed;
                 UIController.Instance.ShowLoseMessage();
             }
+
+        }
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.name == "cat")
+        {
+            instance.speed = instance.speed / 4f;
+            if (timer > 0)
+            {
+                triggered = true;
+            }
+            
         }
     }
 

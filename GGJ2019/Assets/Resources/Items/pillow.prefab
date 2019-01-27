@@ -10,10 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2721987424684320871}
   - component: {fileID: 5468410613420017531}
-  - component: {fileID: 2165100580205190662}
   - component: {fileID: 5746247345764023884}
-  - component: {fileID: 5661319360330853610}
-  m_Layer: 0
+  - component: {fileID: 91161274032958744}
+  m_Layer: 2
   m_Name: pillow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,9 +67,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -2029657205
+  m_SortingLayer: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 6905e8cfe5928be4fad2aa1b8edd4bad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -82,19 +81,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2165100580205190662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2024800384611983035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c4a52b03d152824484ee5895dc1fa8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sortOnUpdate: 0
 --- !u!114 &5746247345764023884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,8 +94,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 2
---- !u!68 &5661319360330853610
-EdgeCollider2D:
+--- !u!61 &91161274032958744
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -121,12 +107,16 @@ EdgeCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.059648037}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 23.62, y: 23.62}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.6295543}
   m_EdgeRadius: 0
-  m_Points:
-  - {x: 0.02812886, y: -0.27821082}
-  - {x: -0.46798944, y: 0.02474019}
-  - {x: -0.01650411, y: 0.3395115}
-  - {x: 0.2008459, y: 0.17762479}
-  - {x: 0.4331504, y: 0.0050880024}
-  - {x: 0.014310092, y: -0.2829262}
