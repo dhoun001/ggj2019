@@ -51,6 +51,7 @@ public class UIController : Singleton<UIController>
             return;
 
         Fade(0.5f);
+        catBehavior.HaltCat();
         //TODO: show win messsage
         _messegeLog.text = "Level Complete!";
         //TODO: show next level button, quit to menu button

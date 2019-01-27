@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2406165924773426487}
   - component: {fileID: 2421038315003831079}
   - component: {fileID: 5631504367777075925}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: vase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.015436709, y: -0.24956274}
