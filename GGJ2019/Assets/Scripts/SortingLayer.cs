@@ -27,6 +27,6 @@ public class SortingLayer : MonoBehaviour
 
     private void SortLayer()
     {
-        spriteRenderer.sortingOrder = Mathf.RoundToInt(transform.position.y * 1000);
+        spriteRenderer.sortingOrder = Mathf.RoundToInt(transform.position.y * 1000) * -1;
     }
 }
