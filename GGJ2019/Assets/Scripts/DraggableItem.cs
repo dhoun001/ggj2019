@@ -10,9 +10,19 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public GameObject draggingObject;
     private Vector3 startPosition;
     private Transform startParent;
-    private int Z_LAYER = 0; 
+    private int Z_LAYER = 0;
+    public BoxCollider2D placingBox;
+    public BoxCollider2D draggingBox;
+
+    void Start()
+    {
+        placingBox.enabled = false;
+        draggingBox.enabled = true;
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
+        ToggleHitBox();
         draggingObject = gameObject;
         startPosition = transform.position;
         startParent = transform.parent;
@@ -29,7 +39,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if(Inventory.Instance.display.IsItemInsideBar(draggingObject.transform.position))
+        if (Inventory.Instance.display.IsItemInsideBar(draggingObject.transform.position))
         {
             Inventory.Instance.AddItem(itemType);
             Destroy(draggingObject);
@@ -38,6 +48,33 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             Debug.Log("You missed the inventory bar!");
         }
+        GameManager.Instance.currentGroundTileMap.GetComponent<Ground>().DestroyItems();
+        ToggleHitBox();
+        ReturnItemToInventory();
+    }
+
+    public void ToggleHitBox()
+    {
+        if(placingBox.enabled)
+        {
+            placingBox.enabled = false;
+            draggingBox.enabled = true;
+        }
+        else
+        {
+            placingBox.enabled = true;
+            draggingBox.enabled = false;
+        }
+    }
+
+    /// <summary>
+    /// Returns the dragging item back to the inventory.
+    /// Happens if the item is dragged back into the inventory or is in an illegal spot.
+    /// </summary>
+    public void ReturnItemToInventory()
+    {
+        Destroy(draggingObject);
+        Inventory.Instance.AddItem(draggingObject.GetComponent<DraggableItem>().itemType);
         draggingObject = null;
     }
 

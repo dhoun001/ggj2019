@@ -36,6 +36,7 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             sourceObject = clone;
             //Enable dragging for this object.
             draggingObject.GetComponent<DraggableItem>().enabled = true;
+            draggingObject.GetComponent<DraggableItem>().ToggleHitBox();
             //Remove the item, perhaps even from the hotbar if it was the last one.
             Inventory.Instance.RemoveItem(sourceItem.itemType);
             Debug.Log("Begin dragging.");
@@ -56,44 +57,37 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         {
             if (Inventory.Instance.display.IsItemInsideBar(draggingObject.transform.position))
             {
-                Destroy(draggingObject);
-                Inventory.Instance.AddItem(draggingObject.GetComponent<DraggableItem>().itemType);
+                ReturnItemToInventory();
             }
             else
             {
                 Debug.Log("You missed the inventory bar!");
             }
-            UpdateDraggedObjectPosition();
             //Drop the dragged object onto a cell.
-            //TileBase tile = GameManager.Instance.currentTileMap.GetTile(GameManager.Instance.currentTileMap.WorldToCell(draggingObject.transform.position));
             Vector3Int cellPos = GameManager.Instance.currentBlockerTileMap.WorldToCell(draggingObject.transform.position);
             Debug.Log("Target cell position: " + cellPos);
+
+            //LOOK HERE FOR MAIN DESTROYING FUNCTION. EVERYTHING IN THE FUNCTION ABOOVE IS REDUDANT FOR NOW
+            //Right now the only way that the item gets destroyed is if its in the trigger of the blockers
+            if (GameManager.Instance.currentGroundTileMap.GetComponent<Ground>().DestroyItems())
+            {
+                ReturnItemToInventory();
+            }
 
             //draggingObject.transform.position = GameManager.Instance.currentGroundTileMap.CellToWorld(cellPos);
             Debug.Log("Final position: " + draggingObject.transform.position);
 
-            if (!GameManager.Instance.currentBlockerTileMap.HasTile(cellPos))
-                //&& GameManager.Instance.currentGroundTileMap.GetComponent<TilemapCollider2D>().bounds.Contains(draggingObject.transform.position))
+            gridItem[] interactableObjects = FindObjectsOfType<gridItem>();
+            foreach (gridItem item in interactableObjects)
             {
-                gridItem[] interactableObjects = FindObjectsOfType<gridItem>();
-                foreach (gridItem item in interactableObjects)
+                Vector3Int itemCellPos = GameManager.Instance.currentBlockerTileMap.WorldToCell(item.transform.position);
+                if (itemCellPos == cellPos)
                 {
-                    Vector3Int itemCellPos = GameManager.Instance.currentBlockerTileMap.WorldToCell(item.transform.position);
-                    if(itemCellPos == cellPos)
-                    {
-                        Debug.LogError("Item blocked by an interactable object.");
-                        return;
-                    }
+                    Debug.LogWarning("Item blocked by an interactable object.");
+                    ReturnItemToInventory();
                 }
             }
-            else
-            {
-                Debug.Log("Tile is on blocker.");
-            }
 
-            //LOOK HERE FOR MAIN DESTROYING FUNCTION. EVERYTHING IN THE FUNCTION ABOOVE IS REDUDANT FOR NOW
-            //Right now the only way that the item gets destroyed is if its in the trigger of the blockers
-            GameManager.Instance.currentBlockerTileMap.GetComponent<Ground>().DestroyItems();
             draggingObject = null;
             canDrag = isSlotted ? true : false;
             Debug.Log("Done dragging.");
@@ -107,5 +101,15 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         //Since Input.mousePosition is only taking a 2D coordinate, we need to specify our z coordinate to be in front of the camera
         pos.z = 0;
         draggingObject.transform.position = pos;
+    }
+
+    /// <summary>
+    /// Returns the dragging item back to the inventory.
+    /// Happens if the item is dragged back into the inventory or is in an illegal spot.
+    /// </summary>
+    public void ReturnItemToInventory()
+    {
+        Destroy(draggingObject);
+        Inventory.Instance.AddItem(draggingObject.GetComponent<DraggableItem>().itemType);
     }
 }

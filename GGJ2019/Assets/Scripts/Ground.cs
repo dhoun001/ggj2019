@@ -13,10 +13,8 @@ public enum TileMapType
 public class Ground : MonoBehaviour
 {
     public TileMapType mapType;
-    GameObject colliderObject;
-    private void Awake()
-    {
-    }
+    public GameObject colliderObject;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,7 +55,7 @@ public class Ground : MonoBehaviour
         }
     }
 
-    public void DestroyItems()
+    public bool DestroyItems()
     {
         Debug.Log("Destroying!");
         if (colliderObject != null)
@@ -65,6 +63,8 @@ public class Ground : MonoBehaviour
             Debug.Log("Found something to destroy!");
             Destroy(colliderObject);
             colliderObject = null;
+            return true;
         }
+        return false;
     }
 }
