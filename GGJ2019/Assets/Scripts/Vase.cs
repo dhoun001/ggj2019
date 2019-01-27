@@ -9,4 +9,12 @@ public class Vase : gridItem
         //TODO: lose level
         UIController.Instance.ShowLoseMessage();
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "cat")
+        {
+            UIController.Instance.ShowLoseMessage();
+        }
+    }
 }
