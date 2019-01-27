@@ -14,7 +14,7 @@ public class FoodBowl : gridItem
     {
         if (collision.gameObject.name == "cat")
         {
-            UIController.Instance.ShowLoseMessage();
+            UIController.Instance.ShowWinMessage();
         }
     }
 }
