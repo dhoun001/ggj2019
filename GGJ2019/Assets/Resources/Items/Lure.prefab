@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 547882244706404546}
   - component: {fileID: 7060499049390914042}
   - component: {fileID: 8743408080714040258}
+  - component: {fileID: 5180012430160997992}
   m_Layer: 0
   m_Name: Lure
   m_TagString: Untagged
@@ -187,3 +188,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &5180012430160997992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8857600056666821217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9ba871a8cf2b1f4491a40cd828ad1e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priority: 0
+  isWall: 0
+  isElevated: 0
