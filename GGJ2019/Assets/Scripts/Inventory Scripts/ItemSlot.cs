@@ -36,7 +36,6 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             sourceObject = clone;
             //Enable dragging for this object.
             draggingObject.GetComponent<DraggableItem>().enabled = true;
-            draggingObject.GetComponent<DraggableItem>().ToggleHitBox();
             //Remove the item, perhaps even from the hotbar if it was the last one.
             Inventory.Instance.RemoveItem(sourceItem.itemType);
             Debug.Log("Begin dragging.");
@@ -87,7 +86,7 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
                     ReturnItemToInventory();
                 }
             }
-
+            draggingObject.GetComponent<DraggableItem>().ToggleHitBox();
             draggingObject = null;
             canDrag = isSlotted ? true : false;
             Debug.Log("Done dragging.");

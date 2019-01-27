@@ -16,8 +16,8 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     void Start()
     {
-        placingBox.enabled = false;
-        draggingBox.enabled = true;
+        placingBox.enabled = true;
+        draggingBox.enabled = false;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -48,9 +48,11 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             Debug.Log("You missed the inventory bar!");
         }
-        GameManager.Instance.currentGroundTileMap.GetComponent<Ground>().DestroyItems();
+        if (GameManager.Instance.currentGroundTileMap.GetComponent<Ground>().DestroyItems())
+        {
+            ReturnItemToInventory();
+        }
         ToggleHitBox();
-        ReturnItemToInventory();
     }
 
     public void ToggleHitBox()
@@ -76,6 +78,12 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         Destroy(draggingObject);
         Inventory.Instance.AddItem(draggingObject.GetComponent<DraggableItem>().itemType);
         draggingObject = null;
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Tag of trigger: " + collision.tag);
+        
     }
 
 }
