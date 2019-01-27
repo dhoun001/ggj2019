@@ -15,9 +15,12 @@ public class Pillow : MonoBehaviour
         instance = FindObjectOfType<catBehavior>();
         catSpeed = instance.speed;
     }
+
+    private bool triggered = false;
     void Update()
     {
-        
+        if (triggered)
+            timer -= Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -27,10 +30,11 @@ public class Pillow : MonoBehaviour
             instance.speed = instance.speed / 2;
             while (timer > 0)
             {
-                timer -= Time.deltaTime;
+                triggered = true;
             }
             if (timer <= 0)
             {
+                triggered = false;
                 instance.speed = catSpeed;
                 UIController.Instance.ShowLoseMessage();
             }
