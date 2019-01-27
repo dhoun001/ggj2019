@@ -6,7 +6,8 @@ public class InventoryBar : ObjectPooler
 {
     private List<ItemSlot> itemSlots;
     // Start is called before the first frame update
-    new void Start()
+
+    private void Awake()
     {
         itemSlots = new List<ItemSlot>();
     }
@@ -20,7 +21,8 @@ public class InventoryBar : ObjectPooler
     public void Initalize(int amount)
     {
         pooledAmount = amount;
-        base.Start();
+        toggleOn = true;
+        base.GenerateObjects();
         foreach (GameObject obj in pooledObjects)
         {
             itemSlots.Add(obj.GetComponent<ItemSlot>());

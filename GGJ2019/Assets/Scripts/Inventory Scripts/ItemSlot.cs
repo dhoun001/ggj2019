@@ -80,7 +80,9 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             foreach (gridItem item in interactableObjects)
             {
                 Vector3Int itemCellPos = GameManager.Instance.currentBlockerTileMap.WorldToCell(item.transform.position);
-                if (itemCellPos == cellPos)
+                Debug.Log(item);
+                Debug.Log(draggingObject.GetComponent<gridItem>());
+                if (itemCellPos == cellPos && item.name != draggingObject.name)
                 {
                     Debug.LogWarning("Item blocked by an interactable object.");
                     ReturnItemToInventory();

@@ -41,14 +41,12 @@ public class Ground : MonoBehaviour
 
         if (collision.tag == "Item")
         {
-            Debug.Log("Looking at " + collision.name);
             colliderObject = collision.gameObject;
         }
     }
 
     public void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log(collision.name + " is exiting the trigger!");
         if (collision.tag == "Item")
         {
             colliderObject = null;
