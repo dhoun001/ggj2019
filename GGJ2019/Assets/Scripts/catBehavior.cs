@@ -46,6 +46,11 @@ public class catBehavior : MonoBehaviour {
         return closest;
     }
 
+    public void HaltCat()
+    {
+        StopAllCoroutines();
+    }
+
     private bool CheckCanSee(gridItem item)
     {
         Vector3 direction = item.transform.position - transform.position;
