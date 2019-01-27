@@ -73,7 +73,7 @@ public class Inventory : Singleton<Inventory>
         //Do not add new item if we don't have room.
         if (inventoryFull())
         {
-            Debug.Log("Inventory Full!");
+            Debug.LogWarning("Inventory Full!");
             return;
         }
         //There's no item in the hotbar, so let's create it!

@@ -52,8 +52,8 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         if (Inventory.Instance.display.IsItemInsideBar(draggingObject.transform.position))
         {
-            Inventory.Instance.AddItem(itemType);
-            Destroy(draggingObject);
+            ReturnItemToInventory();
+            return;
         }
         else
         {
@@ -62,6 +62,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         if (!CanPlace())
         {
             ReturnItemToInventory();
+            return;
         }
         ToggleHitBox();
     }
@@ -94,14 +95,12 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Tag of trigger entering: " + collision.tag);
         colliderTags.Add(collision.tag);
         
     }
 
     public void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log("Tag of trigger leaving: " + other.tag);
         colliderTags.Remove(other.tag);
     }
 
