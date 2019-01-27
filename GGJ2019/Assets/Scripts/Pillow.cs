@@ -6,12 +6,13 @@ public class Pillow : MonoBehaviour
 {
     [SerializeField]
     private float timer = 2f;
-    catBehavior instance = FindObjectOfType<catBehavior>();
+    catBehavior instance = null;
     private float catSpeed = 0;
     // Update is called once per frame
 
     void Awake()
     {
+        instance = FindObjectOfType<catBehavior>();
         catSpeed = instance.speed;
     }
     void Update()
