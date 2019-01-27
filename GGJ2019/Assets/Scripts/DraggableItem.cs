@@ -14,6 +14,17 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public BoxCollider2D placingBox;
     public BoxCollider2D draggingBox;
 
+    private List<string> colliderTags;
+    private List<string> bannedTags;
+
+    void Awake()
+    {
+        colliderTags = new List<string>();
+        bannedTags = new List<string>();
+        bannedTags.Add("Blocker");
+        bannedTags.Add("Walls");
+    }
+
     void Start()
     {
         placingBox.enabled = true;
@@ -48,7 +59,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             Debug.Log("You missed the inventory bar!");
         }
-        if (GameManager.Instance.currentGroundTileMap.GetComponent<Ground>().DestroyItems())
+        if (!CanPlace())
         {
             ReturnItemToInventory();
         }
@@ -82,8 +93,33 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Tag of trigger: " + collision.tag);
+        Debug.Log("Tag of trigger entering: " + collision.tag);
+        colliderTags.Add(collision.tag);
         
+    }
+
+    public void OnTriggerExit2D(Collider2D other)
+    {
+        Debug.Log("Tag of trigger leaving: " + other.tag);
+        colliderTags.Remove(other.tag);
+    }
+
+    public bool CanPlace()
+    {
+        //The object probably never hit the ground.
+        if (!colliderTags.Contains("Ground"))
+        {
+            return false;
+        }
+
+        foreach (string bannedTag in bannedTags)
+        {
+            if(colliderTags.Contains(bannedTag))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
 }

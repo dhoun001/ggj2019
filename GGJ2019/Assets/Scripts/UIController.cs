@@ -23,6 +23,11 @@ public class UIController : Singleton<UIController>
         _fadeImage.color = color;
     }
 
+    public void RunInProgress()
+    {
+        _messegeLog.text = GameManager.Instance.petName + " is moving!";
+    }
+
     public void ShowWinMessage()
     {
         if (inLoseState)
