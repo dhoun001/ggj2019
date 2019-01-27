@@ -26,7 +26,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
                     if (_instance == null)
                     {
-                        Debug.LogError("Object not found. Creating new object...");
+                        Debug.LogWarning("Object not found. Creating new object...");
                         _singleton = new GameObject();
                         _instance = _singleton.AddComponent<T>();
                         _singleton.name = typeof(T).ToString();
