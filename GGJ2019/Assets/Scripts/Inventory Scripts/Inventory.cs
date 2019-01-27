@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
+public class Inventory : Singleton<Inventory>
 {
     [System.Serializable]
     public class InventoryItem
@@ -21,10 +21,6 @@ public class Inventory : MonoBehaviour
         items = new List<Item>();
         maxSlots = itemList.Count;
         Initialize();
-        RemoveItem(ItemType.Lure);
-        RemoveItem(ItemType.Lure);
-        RemoveItem(ItemType.Lure);
-        RemoveItem(ItemType.Box);
     }
 
     // Update is called once per frame
@@ -45,7 +41,7 @@ public class Inventory : MonoBehaviour
 
     /// <summary>
     /// Adds a new item in the internal inventory
-    /// Displays it if it isn't on the hotbar, otherwise increses the quantity of the item
+    /// Displays it if it isn't on the hotbar, otherwise increases the quantity of the item
     /// Ideally used for dragging items back to your inventory
     /// </summary>
     /// <param name="type"></param>

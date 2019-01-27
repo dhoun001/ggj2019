@@ -9,11 +9,6 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     private static bool appIsQuitting = false;
     private static GameObject _singleton = null;
 
-    private void Awake()
-    {
-        DontDestroyOnLoad(this.gameObject);
-    }
-
     public static T Instance
     {
         get
@@ -35,7 +30,6 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                         _singleton = new GameObject();
                         _instance = _singleton.AddComponent<T>();
                         _singleton.name = typeof(T).ToString();
-                        DontDestroyOnLoad(_singleton);
                     }
                     else
                     {

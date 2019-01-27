@@ -56,10 +56,11 @@ public class InventoryBar : ObjectPooler
                 GameObject obj = (GameObject)Instantiate(Resources.Load("Items/" + item.itemType.ToString()));
                 obj.transform.position = slot.gameObject.transform.position;
                 obj.transform.parent = slot.gameObject.transform;
-
+                obj.GetComponent<DraggableItem>().enabled = false;
                 //Pass in information for slot
                 slot.sourceObject = obj;
                 slot.sourceItem = item;
+                slot.canDrag = true;
                 slot.isSlotted = true;
 
                 //Update quantity
@@ -88,5 +89,20 @@ public class InventoryBar : ObjectPooler
                 return;
             }
         }
+    }
+
+    /// <summary>
+    /// Used to check if a game object resides within the bounds of the inventory.
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <returns></returns>
+    public bool IsItemInsideBar(Vector3 pos)
+    {
+        RectTransform rect = this.GetComponent<RectTransform>();
+        if (RectTransformUtility.RectangleContainsScreenPoint(rect, Camera.main.WorldToScreenPoint(pos), Camera.main))
+        {
+            return true;
+        }
+        return false;
     }
 }
