@@ -12,6 +12,8 @@ public class UIController : Singleton<UIController>
     [SerializeField]
     private Button _leaveLevelButton;
 
+    public bool inLoseState = false;
+
     public void Fade(float a)
     {
         Color color = _fadeImage.color;
@@ -21,6 +23,9 @@ public class UIController : Singleton<UIController>
 
     public void ShowWinMessage()
     {
+        if (inLoseState)
+            return;
+
         Fade(0.5f);
         //TODO: show win messsage
         _messegeLog.text = "Level Complete!";
@@ -31,6 +36,7 @@ public class UIController : Singleton<UIController>
 
     public void ShowLoseMessage()
     {
+        inLoseState = true;
         //TODO: show lose message
         _messegeLog.text = "Uh oh! Press Restart!";
         //TODO: flash Restart button

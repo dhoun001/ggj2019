@@ -11,6 +11,7 @@ public class LevelFunctions : Singleton<LevelFunctions>
 
     public void Restart()
     {
+        UIController.Instance.inLoseState = false;
         GameManager.Instance.RestartRun();
     }
 
