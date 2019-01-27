@@ -7,20 +7,32 @@ public class UIController : Singleton<UIController>
 {
     [SerializeField]
     private Image _fadeImage;
+    [SerializeField]
+    private Text _messegeLog;
+    [SerializeField]
+    private Button _leaveLevelButton;
+
+    public void Fade(float a)
+    {
+        Color color = _fadeImage.color;
+        color.a = a;
+        _fadeImage.color = color;
+    }
 
     public void ShowWinMessage()
     {
-        Color color = _fadeImage.color;
-        color.a = 0.5f;
-        _fadeImage.color = color;
+        Fade(0.5f);
         //TODO: show win messsage
+        _messegeLog.text = "Level Complete!";
         //TODO: show next level button, quit to menu button
+        _leaveLevelButton.gameObject.SetActive(true);
         //TODO: show good feelings
     }
 
     public void ShowLoseMessage()
     {
         //TODO: show lose message
+        _messegeLog.text = "Uh oh! Press Restart!";
         //TODO: flash Restart button
         //TODO: at this point, ensure player cannot win level unless they restart
     }
