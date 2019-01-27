@@ -10,9 +10,30 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public GameObject draggingObject;
     private Vector3 startPosition;
     private Transform startParent;
-    private int Z_LAYER = 0; 
+    private int Z_LAYER = 0;
+    public BoxCollider2D placingBox;
+    public BoxCollider2D draggingBox;
+
+    private List<string> colliderTags;
+    private List<string> bannedTags;
+
+    void Awake()
+    {
+        colliderTags = new List<string>();
+        bannedTags = new List<string>();
+        bannedTags.Add("Blocker");
+        bannedTags.Add("Walls");
+    }
+
+    void Start()
+    {
+        placingBox.enabled = true;
+        draggingBox.enabled = false;
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
+        ToggleHitBox();
         draggingObject = gameObject;
         startPosition = transform.position;
         startParent = transform.parent;
@@ -29,7 +50,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if(Inventory.Instance.display.IsItemInsideBar(draggingObject.transform.position))
+        if (Inventory.Instance.display.IsItemInsideBar(draggingObject.transform.position))
         {
             Inventory.Instance.AddItem(itemType);
             Destroy(draggingObject);
@@ -38,7 +59,67 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             Debug.Log("You missed the inventory bar!");
         }
+        if (!CanPlace())
+        {
+            ReturnItemToInventory();
+        }
+        ToggleHitBox();
+    }
+
+    public void ToggleHitBox()
+    {
+        if(placingBox.enabled)
+        {
+            placingBox.enabled = false;
+            draggingBox.enabled = true;
+        }
+        else
+        {
+            placingBox.enabled = true;
+            draggingBox.enabled = false;
+        }
+    }
+
+    /// <summary>
+    /// Returns the dragging item back to the inventory.
+    /// Happens if the item is dragged back into the inventory or is in an illegal spot.
+    /// </summary>
+    public void ReturnItemToInventory()
+    {
+        Destroy(draggingObject);
+        Inventory.Instance.AddItem(draggingObject.GetComponent<DraggableItem>().itemType);
         draggingObject = null;
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Tag of trigger entering: " + collision.tag);
+        colliderTags.Add(collision.tag);
+        
+    }
+
+    public void OnTriggerExit2D(Collider2D other)
+    {
+        Debug.Log("Tag of trigger leaving: " + other.tag);
+        colliderTags.Remove(other.tag);
+    }
+
+    public bool CanPlace()
+    {
+        //The object probably never hit the ground.
+        if (!colliderTags.Contains("Ground"))
+        {
+            return false;
+        }
+
+        foreach (string bannedTag in bannedTags)
+        {
+            if(colliderTags.Contains(bannedTag))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
