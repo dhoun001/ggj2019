@@ -7,6 +7,6 @@ public class FoodBowl : gridItem
     public override void OnArrive()
     {
         //TODO: show level win ui
-        //TODO: cat love animation
+        UIController.Instance.ShowWinMessage();
     }
 }

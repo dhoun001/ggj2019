@@ -7,5 +7,6 @@ public class Vase : gridItem
     public override void OnArrive()
     {
         //TODO: lose level
+        UIController.Instance.ShowLoseMessage();
     }
 }
