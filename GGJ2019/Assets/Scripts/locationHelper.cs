@@ -28,7 +28,10 @@ public class locationHelper
 
         //checks for ties in closest
         for (int i = 0; i < cellPos.Length; ++i){
-            if (distance[i] < lowestDistance){
+            if (catPos == cellPos[i]){
+                ++i;
+            }
+            else if (distance[i] < lowestDistance){
                 lowestDistance = distance[i];
                 indexHighDis[tracker] = i;
                 indexOfTarget = i;

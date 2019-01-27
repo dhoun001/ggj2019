@@ -8,6 +8,9 @@ public class catBehavior : MonoBehaviour {
     [SerializeField]
     private int range = 3;
 
+    [SerializeField]
+    private float speed = 30f;
+
     Vector3 highestPriority = new Vector3();
     gridItem[] arrItem;
     //int index = 0;
@@ -15,11 +18,11 @@ public class catBehavior : MonoBehaviour {
 
     void Awake(){
         arrItem = FindObjectsOfType<gridItem>();
+        StartCoroutine("moving");
     }
 
     // Update is called once per frame
     void Update(){
-        StartCoroutine("moving");
     }
 
     Vector3 getPriority(){
@@ -42,7 +45,18 @@ public class catBehavior : MonoBehaviour {
     {
         Vector3 destination = getPriority();
         Vector3 position = gameObject.transform.position;
-        gameObject.transform.position = Vector3.Lerp(position, destination, .01f);
-        yield return null;
+        //Debug.Log(destination);
+        //Debug.Log(position);
+        //Vector3Int desCell = gameObject.GetComponentInParent<GridLayout>().WorldToCell(destination);
+        //Vector3Int posCell = gameObject.GetComponentInParent<GridLayout>().WorldToCell(gameObject.transform.position);
+        while (Vector3.Distance(transform.position, destination) > 0.001f){
+            //interpolating = true;
+            //Debug.Log(desCell);
+            //Debug.Log(gameObject.GetComponentInParent<GridLayout>().WorldToCell(gameObject.transform.position));
+            gameObject.transform.position = Vector3.Lerp(position, destination, Time.deltaTime * speed);
+            //posCell = gameObject.GetComponentInParent<GridLayout>().WorldToCell(gameObject.transform.position);
+            yield return null;
+        }
+        interpolating = false;
     }
 }
