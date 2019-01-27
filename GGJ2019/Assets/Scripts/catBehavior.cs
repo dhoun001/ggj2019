@@ -9,9 +9,10 @@ public class catBehavior : MonoBehaviour {
     private int range = 3;
 
     Vector3 highestPriority = new Vector3();
-    int highestP = 0;
-
+    gridItem[] arrItem;
+    int index = 0;
     void Awake(){
+        arrItem = FindObjectsOfType<gridItem>();
     }
 
     // Update is called once per frame
@@ -21,26 +22,33 @@ public class catBehavior : MonoBehaviour {
 
     Vector3 getPriority(){
         Vector3Int catPos = gameObject.GetComponentInParent<GridLayout>().WorldToCell(gameObject.transform.position);
-        gridItem[] arrItem = FindObjectsOfType<gridItem>();
-        float[] itemDis = new float[arrItem.Length];
-        
+        int[] arrItemPrio = new int[arrItem.Length];
+        Vector3[] worldList = new Vector3[arrItem.Length];
+        Vector3Int[] cellList = new Vector3Int[arrItem.Length];
         for (int i = 0; i < arrItem.Length; ++i){
-            Vector3 itemWorld = arrItem[i].gameObject.transform.position;
-            Vector3Int itemCell = gameObject.GetComponentInParent<GridLayout>().WorldToCell(itemWorld);
-            itemDis[i] = Vector3.Distance(catPos, itemCell);
-            
-            if (arrItem[i].priority > highestP)
-            {
-                highestP = arrItem[i].priority;
-                highestPriority = arrItem[i].gameObject.transform.position;
-            }
+            worldList[i] = arrItem[i].gameObject.transform.position;
+            cellList[i] = gameObject.GetComponentInParent<GridLayout>().WorldToCell(worldList[i]);
+            arrItemPrio[i] = arrItem[i].priority;
         }
+        locationHelper calculation = new locationHelper(worldList, cellList, catPos, arrItemPrio);
+        highestPriority = calculation.findTarget();
+        index = calculation.indexOfTarget;
         return highestPriority;
     }
 
     void move(){
         Vector3 destination = getPriority();
         gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, destination, .01f);
-        highestP = 0;
+        //gridItem[] newArr = new gridItem[arrItem.Length - 1];
+        //for(int i = 0; i < arrItem.Length; ++i){
+        //    if (i == index){
+        //        i++;
+        //    }
+        //    else{
+        //        newArr[i] = arrItem[i];
+        //    }
+        //}
+        //arrItem = newArr;
+        //Debug.Log(arrItem);
     }
 }
