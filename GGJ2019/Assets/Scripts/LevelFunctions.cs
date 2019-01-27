@@ -14,6 +14,7 @@ public class LevelFunctions : Singleton<LevelFunctions>
     public void Play()
     {
         GameManager.Instance.StartRun();
+        UIController.Instance.RunInProgress();
         catBehavior.StartCatMoving();
     }
 
