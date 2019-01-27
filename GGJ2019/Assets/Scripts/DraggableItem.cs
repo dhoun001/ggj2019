@@ -86,6 +86,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     /// </summary>
     public void ReturnItemToInventory()
     {
+        GameManager.Instance.placedObjects.Remove(draggingObject);
         Destroy(draggingObject);
         Inventory.Instance.AddItem(draggingObject.GetComponent<DraggableItem>().itemType);
         draggingObject = null;
