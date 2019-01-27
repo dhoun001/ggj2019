@@ -8,7 +8,7 @@ public class gridItem : MonoBehaviour {
 
     [SerializeField]
     public int priority = 0;
-
+    public float additionalSpeed = 0f;
     public bool isWall = false;
     public bool isElevated = false;
 

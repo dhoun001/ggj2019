@@ -5,9 +5,8 @@ using UnityEngine.UI;
 
 public enum ItemType
 {
-    Vase = 0,
     Lure,
-    Box
+    SuperLure,
 };
 
 public class Item

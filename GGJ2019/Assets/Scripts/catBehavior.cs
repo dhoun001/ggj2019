@@ -98,7 +98,7 @@ public class catBehavior : MonoBehaviour {
 
         while (transform.position != finalPos)
         {
-            transform.position = Vector3.MoveTowards(transform.position, finalPos, Time.deltaTime * speed);
+            transform.position = Vector3.MoveTowards(transform.position, finalPos, Time.deltaTime * (speed + gridItem.additionalSpeed));
             yield return null;
         }
         gridItem.gameObject.SetActive(false);
