@@ -179,11 +179,11 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 4
+  m_ChildAlignment: 3
   m_Spacing: 10
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 0
+  m_ChildControlWidth: 1
   m_ChildControlHeight: 0
 --- !u!114 &1481141754911135791
 MonoBehaviour:
@@ -253,12 +253,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   display: {fileID: 1481141754911135791}
   itemList:
-  - type: 0
-    quantity: 3
   - type: 1
-    quantity: 5
-  - type: 2
-    quantity: 8
+    quantity: 1
+  - type: 0
+    quantity: 1
 --- !u!1 &7134217526389324476
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,7 +463,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 09ec95c6d0cd25a4c99b3bf2da9b2e4c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: abfa28524449308469915e4ca3ea9a17, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -893,14 +891,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 25f7231773488dc4a914984e4eadfaf8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
