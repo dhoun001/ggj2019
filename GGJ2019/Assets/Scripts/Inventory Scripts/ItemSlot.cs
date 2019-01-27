@@ -68,7 +68,7 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
             //LOOK HERE FOR MAIN DESTROYING FUNCTION. EVERYTHING IN THE FUNCTION ABOOVE IS REDUDANT FOR NOW
             //Right now the only way that the item gets destroyed is if its in the trigger of the blockers
-            if (GameManager.Instance.currentGroundTileMap.GetComponent<Ground>().DestroyItems())
+            if (!draggingObject.GetComponent<DraggableItem>().CanPlace())
             {
                 ReturnItemToInventory();
             }
