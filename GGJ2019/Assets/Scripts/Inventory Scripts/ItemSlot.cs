@@ -57,43 +57,46 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             if (Inventory.Instance.display.IsItemInsideBar(draggingObject.transform.position))
             {
                 ReturnItemToInventory();
+                return;
             }
             else
             {
-                Debug.Log("You missed the inventory bar!");
+                Debug.LogWarning("You missed the inventory bar!");
             }
             //Drop the dragged object onto a cell.
             Vector3Int cellPos = GameManager.Instance.currentBlockerTileMap.WorldToCell(draggingObject.transform.position);
-            Debug.Log("Target cell position: " + cellPos);
+            //Debug.Log("Target cell position: " + cellPos);
 
             //LOOK HERE FOR MAIN DESTROYING FUNCTION. EVERYTHING IN THE FUNCTION ABOOVE IS REDUDANT FOR NOW
             //Right now the only way that the item gets destroyed is if its in the trigger of the blockers
             if (!draggingObject.GetComponent<DraggableItem>().CanPlace())
             {
                 ReturnItemToInventory();
+                return;
             }
-
-            //draggingObject.transform.position = GameManager.Instance.currentGroundTileMap.CellToWorld(cellPos);
-            Debug.Log("Final position: " + draggingObject.transform.position);
 
             gridItem[] interactableObjects = FindObjectsOfType<gridItem>();
             foreach (gridItem item in interactableObjects)
             {
                 Vector3Int itemCellPos = GameManager.Instance.currentBlockerTileMap.WorldToCell(item.transform.position);
-                Debug.Log(item);
-                Debug.Log(draggingObject.GetComponent<gridItem>());
                 if (itemCellPos == cellPos && item.name != draggingObject.name)
                 {
                     Debug.LogWarning("Item blocked by an interactable object.");
                     ReturnItemToInventory();
                 }
             }
-            draggingObject.GetComponent<DraggableItem>().ToggleHitBox();
-            draggingObject = null;
-            canDrag = isSlotted ? true : false;
-            Debug.Log("Done dragging.");
+            FinishPlacement();
         }
 
+    }
+
+    public void FinishPlacement()
+    {
+        GameManager.Instance.placedObjects.Add(draggingObject);
+        draggingObject.GetComponent<DraggableItem>().ToggleHitBox();
+        draggingObject = null;
+        canDrag = isSlotted ? true : false;
+        Debug.Log("Object placed!");
     }
 
     public void UpdateDraggedObjectPosition()
@@ -110,6 +113,7 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     /// </summary>
     public void ReturnItemToInventory()
     {
+        GameManager.Instance.placedObjects.Remove(draggingObject);
         Destroy(draggingObject);
         Inventory.Instance.AddItem(draggingObject.GetComponent<DraggableItem>().itemType);
     }

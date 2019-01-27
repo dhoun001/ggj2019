@@ -22,6 +22,7 @@ public class LevelFunctions : Singleton<LevelFunctions>
     {
         UIController.Instance.inLoseState = false;
         GameManager.Instance.RestartRun();
+        UIController.Instance.ResetLog();
         catBehavior.RestartCatPosition();
     }
 
