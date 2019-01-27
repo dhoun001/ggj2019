@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 
 public class GameManager : Singleton<GameManager>
 {
     public int MaxLevel = 3;
     public int CurrentLevel = 0;
     public bool IsAtLastLevel { get { return CurrentLevel >= MaxLevel; } }
+    public Tilemap currentGroundTileMap;
+    public Tilemap currentBlockerTileMap;
 
     public string petName = "Pet Name";
 
