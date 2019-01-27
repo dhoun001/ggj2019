@@ -8,11 +8,13 @@ public class catBehavior : MonoBehaviour {
     //private Vector3 startingPos = gameObject.transform.position;
     [SerializeField] private float speed = 5f;
 
+    private Animator _catAnimator;
     private Vector3 startCatPos;
-
+    private SpriteRenderer _catRenderer;
     void Awake(){
+        _catAnimator = GetComponent<Animator>();
+        _catRenderer = GetComponent<SpriteRenderer>();
         startCatPos = transform.position;
-        StartCatMoving();
     }
 
     // Update is called once per frame
@@ -58,6 +60,7 @@ public class catBehavior : MonoBehaviour {
 
     public void RestartCatPosition()
     {
+        StopAllCoroutines();
         transform.position = startCatPos;
     }
 
@@ -70,9 +73,24 @@ public class catBehavior : MonoBehaviour {
         }
     }
 
+    private void AnimateCat(Vector3 walkDirection)
+    {
+        _catRenderer.flipX = walkDirection.x >= 0;
+        if (walkDirection.y > 0)
+        {
+            _catAnimator.SetInteger("walk", 1);
+        }
+        else
+        {
+            _catAnimator.SetInteger("walk", 0);
+        }
+    }
+
     private IEnumerator MoveTowardsPosition(gridItem gridItem)
     {
         Vector3 finalPos = gridItem.transform.position;
+        AnimateCat(finalPos - transform.position);
+
         while (transform.position != finalPos)
         {
             transform.position = Vector3.MoveTowards(transform.position, finalPos, Time.deltaTime * speed);

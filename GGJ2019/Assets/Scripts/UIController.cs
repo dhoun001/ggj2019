@@ -11,6 +11,8 @@ public class UIController : Singleton<UIController>
     private Text _messegeLog;
     [SerializeField]
     private Button _leaveLevelButton;
+    [SerializeField]
+    private Button _restartButton;
 
     public bool inLoseState = false;
 
@@ -31,15 +33,16 @@ public class UIController : Singleton<UIController>
         _messegeLog.text = "Level Complete!";
         //TODO: show next level button, quit to menu button
         _leaveLevelButton.gameObject.SetActive(true);
+        _restartButton.interactable = false;
         //TODO: show good feelings
     }
 
     public void ShowLoseMessage()
     {
-        inLoseState = true;
         //TODO: show lose message
         _messegeLog.text = "Uh oh! Press Restart!";
         //TODO: flash Restart button
         //TODO: at this point, ensure player cannot win level unless they restart
+        inLoseState = true;
     }
 }

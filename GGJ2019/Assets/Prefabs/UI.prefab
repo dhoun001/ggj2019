@@ -120,6 +120,7 @@ MonoBehaviour:
   _fadeImage: {fileID: 7134217527787878662}
   _messegeLog: {fileID: 7134217527040782257}
   _leaveLevelButton: {fileID: 7134217526556040423}
+  _restartButton: {fileID: 7134217527500919832}
   inLoseState: 0
 --- !u!1 &1481141754911135788
 GameObject:
@@ -134,6 +135,7 @@ GameObject:
   - component: {fileID: 1481141754911135791}
   - component: {fileID: 2008564798}
   - component: {fileID: 2008564797}
+  - component: {fileID: 371062246}
   m_Layer: 5
   m_Name: Inventory Bar
   m_TagString: Untagged
@@ -237,6 +239,24 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &371062246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481141754911135788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb2d412a6c0917b4dbe0c00bbd4f2b7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  display: {fileID: 1481141754911135791}
+  itemList:
+  - type: 0
+    quantity: 0
+  - type: 1
+    quantity: 0
 --- !u!1 &7134217526389324476
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,6 +375,17 @@ MonoBehaviour:
       - m_Target: {fileID: 0}
         m_MethodName: Play
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7134217526389324478}
+        m_MethodName: set_interactable
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -788,6 +819,17 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7134217526389324478}
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
