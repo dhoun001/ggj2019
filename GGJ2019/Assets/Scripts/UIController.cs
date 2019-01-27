@@ -6,6 +6,12 @@ using UnityEngine.UI;
 public class UIController : Singleton<UIController>
 {
     [SerializeField]
+    private AudioClip winAudio;
+
+    [SerializeField]
+    private AudioClip loseAudio;
+
+    [SerializeField]
     private Image _fadeImage;
     [SerializeField]
     private Text _messegeLog;
@@ -20,6 +26,11 @@ public class UIController : Singleton<UIController>
     private void Awake()
     {
         catBehavior = GameObject.FindGameObjectWithTag("Player").GetComponent<catBehavior>();
+    }
+
+    public void ResetLog()
+    {
+        _messegeLog.text = "";
     }
 
     public void Fade(float a)
@@ -45,6 +56,8 @@ public class UIController : Singleton<UIController>
         //TODO: show next level button, quit to menu button
         _leaveLevelButton.gameObject.SetActive(true);
         _restartButton.interactable = false;
+        GetComponent<AudioSource>().clip = winAudio;
+        GetComponent<AudioSource>().Play();
         //TODO: show good feelings
     }
 
@@ -56,6 +69,8 @@ public class UIController : Singleton<UIController>
         //TODO: flash Restart button
         //TODO: at this point, ensure player cannot win level unless they restart
         inLoseState = true;
+        GetComponent<AudioSource>().clip = loseAudio;
+        GetComponent<AudioSource>().Play();
 
     }
 }
