@@ -10,14 +10,16 @@ public class catBehavior : MonoBehaviour {
 
     Vector3 highestPriority = new Vector3();
     gridItem[] arrItem;
-    int index = 0;
+    //int index = 0;
+    private bool interpolating = false;
+
     void Awake(){
         arrItem = FindObjectsOfType<gridItem>();
     }
 
     // Update is called once per frame
     void Update(){
-        move();
+        StartCoroutine("moving");
     }
 
     Vector3 getPriority(){
@@ -31,24 +33,16 @@ public class catBehavior : MonoBehaviour {
             arrItemPrio[i] = arrItem[i].priority;
         }
         locationHelper calculation = new locationHelper(worldList, cellList, catPos, arrItemPrio);
-        highestPriority = calculation.findTarget();
-        index = calculation.indexOfTarget;
-        return highestPriority;
+        //highestPriority = calculation.findTarget();
+        //index = calculation.indexOfTarget;
+        return calculation.findTarget();
     }
 
-    void move(){
+    IEnumerator moving()
+    {
         Vector3 destination = getPriority();
-        gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, destination, .01f);
-        //gridItem[] newArr = new gridItem[arrItem.Length - 1];
-        //for(int i = 0; i < arrItem.Length; ++i){
-        //    if (i == index){
-        //        i++;
-        //    }
-        //    else{
-        //        newArr[i] = arrItem[i];
-        //    }
-        //}
-        //arrItem = newArr;
-        //Debug.Log(arrItem);
+        Vector3 position = gameObject.transform.position;
+        gameObject.transform.position = Vector3.Lerp(position, destination, .01f);
+        yield return null;
     }
 }
