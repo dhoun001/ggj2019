@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using DG.Tweening;
 
 public class catBehavior : MonoBehaviour {
     
+    private Vector3 startingPos = new Vector3();
 
     void Awake(){
+        startingPos = gameObject.transform.position;
     }
 
     // Update is called once per frame
@@ -23,16 +24,26 @@ public class catBehavior : MonoBehaviour {
         }
     }
 
-    private void getClosestObject(){
+    private gridItem getClosestObject(){
+        gridItem closest = new gridItem();
         List<gridItem> objects = new List<gridItem>();
-        float lowestDistance = 0;
-        while(FindObjectOfType<GameObject>() != null)
-        {
+        float lowestDistance = 100;
+        while(FindObjectOfType<gridItem>() != null){
             objects.Add(FindObjectOfType<gridItem>());
         }
         foreach (gridItem i in objects)
         {
-            if (objects[i] )
+            float distance = Vector3.Distance(i.transform.position, gameObject.transform.position);
+            if (distance < lowestDistance)
+            {
+                lowestDistance = distance;
+                closest = i;
+            }
         }
+        return closest;
+    }
+
+    private void moveCat(){
+        
     }
 }
