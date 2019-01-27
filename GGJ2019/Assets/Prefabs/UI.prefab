@@ -353,10 +353,6 @@ MonoBehaviour:
   display: {fileID: 1481141754911135791}
   itemList:
   - type: 1
-    quantity: 2
-  - type: 0
-    quantity: 5
-  - type: 2
     quantity: 3
 --- !u!1 &7134217526389324476
 GameObject:
@@ -900,7 +896,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: RestartRun
+        m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -917,7 +913,7 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
+          m_FloatArgument: 1
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
