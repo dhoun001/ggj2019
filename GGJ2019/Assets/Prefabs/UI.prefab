@@ -200,7 +200,7 @@ MonoBehaviour:
   pooledObject: {fileID: 2042070877281381706, guid: 1776725b0c8f8a04ba5c3ce3fcb7abf3,
     type: 3}
   containerObject: {fileID: 1481141754911135788}
-  pooledAmount: 5
+  pooledAmount: 2
   startActive: 1
 --- !u!222 &2008564798
 CanvasRenderer:
@@ -254,9 +254,11 @@ MonoBehaviour:
   display: {fileID: 1481141754911135791}
   itemList:
   - type: 0
-    quantity: 0
+    quantity: 3
   - type: 1
-    quantity: 0
+    quantity: 5
+  - type: 2
+    quantity: 8
 --- !u!1 &7134217526389324476
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,9 +432,9 @@ RectTransform:
   m_Father: {fileID: 1481141754464864724}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -265, y: 104.45001}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -236, y: -123}
   m_SizeDelta: {x: 383.69995, y: 154.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7134217526556040425
@@ -463,8 +465,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 09ec95c6d0cd25a4c99b3bf2da9b2e4c, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
