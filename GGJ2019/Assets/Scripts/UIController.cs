@@ -31,6 +31,7 @@ public class UIController : Singleton<UIController>
     public void ResetLog()
     {
         _messegeLog.text = "";
+        _restartButton.GetComponent<PulseObject>().StopPulse();
     }
 
     public void Fade(float a)

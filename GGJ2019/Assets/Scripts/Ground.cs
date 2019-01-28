@@ -21,7 +21,7 @@ public class Ground : MonoBehaviour
 
         if (mapType == TileMapType.Ground)
         {
-            GameManager.Instance.currentGroundTileMap = this.GetComponent<Tilemap>();
+            GameManager.Instance.currentBlockerTileMap = this.GetComponent<Tilemap>();
         }
         else if (mapType == TileMapType.Blocker)
         {
@@ -34,35 +34,5 @@ public class Ground : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-
-        if (collision.tag == "Item")
-        {
-            colliderObject = collision.gameObject;
-        }
-    }
-
-    public void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "Item")
-        {
-            colliderObject = null;
-        }
-    }
-
-    public bool DestroyItems()
-    {
-        Debug.Log("Destroying!");
-        if (colliderObject != null)
-        {
-            Debug.Log("Found something to destroy!");
-            Destroy(colliderObject);
-            colliderObject = null;
-            return true;
-        }
-        return false;
     }
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1481141754464864722}
   - component: {fileID: 1481141754464864721}
   - component: {fileID: 7134217527734847801}
-  - component: {fileID: 6193292919651472791}
+  - component: {fileID: 94828328145300049}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -125,7 +125,7 @@ MonoBehaviour:
   _leaveLevelButton: {fileID: 7134217526556040423}
   _restartButton: {fileID: 7134217527500919832}
   inLoseState: 0
---- !u!82 &6193292919651472791
+--- !u!82 &94828328145300049
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,9 +135,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 23fdfecbbead07a4584ca26dae599f6b, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.674
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -353,7 +353,7 @@ MonoBehaviour:
   display: {fileID: 1481141754911135791}
   itemList:
   - type: 1
-    quantity: 2
+    quantity: 3
 --- !u!1 &7134217526389324476
 GameObject:
   m_ObjectHideFlags: 0
@@ -921,17 +921,6 @@ MonoBehaviour:
       - m_Target: {fileID: 7134217526389324478}
         m_MethodName: set_interactable
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 7134217527500919831}
-        m_MethodName: StopPulse
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

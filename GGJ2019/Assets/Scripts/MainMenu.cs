@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
@@ -39,9 +40,20 @@ public class MainMenu : MonoBehaviour
         GameManager.Instance.petName = petName;
     }
 
+    public void Credits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public void LoadNext()
     {
         MenuFunctions.Instance.LoadLevel(1);
+        GameManager.Instance.PlayTrack();
     }
 
     public void QuitGame()

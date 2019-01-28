@@ -9,10 +9,9 @@ public class GameManager : Singleton<GameManager>
     public int MaxLevel = 3;
     public int CurrentLevel = 0;
     public bool IsAtLastLevel { get { return CurrentLevel >= MaxLevel; } }
-    public Tilemap currentGroundTileMap;
     public Tilemap currentBlockerTileMap;
     public List<GameObject> placedObjects;
-
+    public AudioSource audioPlayer;
     public string petName = "Pet Name";
 
     public void StartRun()
@@ -36,5 +35,10 @@ public class GameManager : Singleton<GameManager>
         Inventory.Instance.PopulateItems();
         //TODO: reenable inventory
         //TODO: Reset cat to starting position
+    }
+
+    public void PlayTrack()
+    {
+        audioPlayer.Play();
     }
 }
