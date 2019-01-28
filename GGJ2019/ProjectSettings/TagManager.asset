@@ -55,3 +55,6 @@ TagManager:
   - name: Interactable
     uniqueID: 786810197
     locked: 0
+  - name: Particles
+    uniqueID: 2239150381
+    locked: 0
