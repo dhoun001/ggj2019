@@ -30,6 +30,10 @@ public class LevelFunctions : Singleton<LevelFunctions>
         {
             p.ResetObject();
         }
+        foreach (Vase p in FindObjectsOfType<Vase>())
+        {
+            p.GetComponent<SpriteRenderer>().enabled = true;
+        }
     }
 
     public void NextLevel()

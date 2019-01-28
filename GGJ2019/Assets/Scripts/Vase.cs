@@ -16,6 +16,7 @@ public class Vase : gridItem
         {
             UIController.Instance.ShowLoseMessage();
             GetComponent<AudioSource>().Play();
+            GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 }
