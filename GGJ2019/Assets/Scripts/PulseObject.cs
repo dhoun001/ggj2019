@@ -43,6 +43,7 @@ public class PulseObject : MonoBehaviour
 
     public void StopPulse()
     {
+        transform.localScale = Vector3.one;
         StopAllCoroutines();
     }
 }
