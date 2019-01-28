@@ -28,7 +28,7 @@ public class ParticleGenerator : MonoBehaviour
             Transform randomTransform = randomPosition[Random.Range(0, randomPosition.Count)];
             instantiated.transform.position = randomTransform.position;
 
-            yield return new WaitForSeconds(Random.Range(1f, 5f));
+            yield return new WaitForSeconds(Random.Range(0.5f, 3f));
         }
 
     }
