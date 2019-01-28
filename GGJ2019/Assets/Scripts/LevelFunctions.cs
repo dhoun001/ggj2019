@@ -24,6 +24,10 @@ public class LevelFunctions : Singleton<LevelFunctions>
         GameManager.Instance.RestartRun();
         UIController.Instance.ResetLog();
         catBehavior.RestartCatPosition();
+        foreach(Pillow p in FindObjectsOfType<Pillow>())
+        {
+            p.ResetObject();
+        }
     }
 
     public void NextLevel()
