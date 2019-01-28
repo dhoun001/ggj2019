@@ -7,10 +7,14 @@ public class catBehavior : MonoBehaviour {
     
     //private Vector3 startingPos = gameObject.transform.position;
     public float speed = 5f;
-    //[SerializeField]
-    //[SerializeField]
-    //[SerializeField]
-    //[SerializeField]
+    [SerializeField]
+    public GameObject happyBub;
+    [SerializeField]
+    public GameObject angryBub;
+    [SerializeField]
+    public GameObject sleepBub;
+    [SerializeField]
+    public GameObject loveBub;
 
     private Animator _catAnimator;
     private Vector3 startCatPos;
