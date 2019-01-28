@@ -36,6 +36,7 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             sourceObject = clone;
             //Enable dragging for this object.
             draggingObject.GetComponent<DraggableItem>().enabled = true;
+            draggingObject.transform.parent = null;
             //Remove the item, perhaps even from the hotbar if it was the last one.
             Inventory.Instance.RemoveItem(sourceItem.itemType);
             Debug.Log("Begin dragging.");
@@ -67,8 +68,7 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             Vector3Int cellPos = GameManager.Instance.currentBlockerTileMap.WorldToCell(draggingObject.transform.position);
             //Debug.Log("Target cell position: " + cellPos);
 
-            //LOOK HERE FOR MAIN DESTROYING FUNCTION. EVERYTHING IN THE FUNCTION ABOOVE IS REDUDANT FOR NOW
-            //Right now the only way that the item gets destroyed is if its in the trigger of the blockers
+            //Check if you can place the object
             if (!draggingObject.GetComponent<DraggableItem>().CanPlace())
             {
                 ReturnItemToInventory();

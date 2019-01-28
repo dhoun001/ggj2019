@@ -107,4 +107,14 @@ public class InventoryBar : ObjectPooler
         }
         return false;
     }
+
+    public void Disable()
+    {
+        this.gameObject.SetActive(false);
+    }
+
+    public void Enable()
+    {
+        this.gameObject.SetActive(true);
+    }
 }

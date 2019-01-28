@@ -15,12 +15,14 @@ public class LevelFunctions : Singleton<LevelFunctions>
     {
         GameManager.Instance.StartRun();
         UIController.Instance.RunInProgress();
+        Inventory.Instance.display.Disable();
         catBehavior.StartCatMoving();
     }
 
     public void Restart()
     {
         UIController.Instance.inLoseState = false;
+        Inventory.Instance.display.Enable();
         GameManager.Instance.RestartRun();
         UIController.Instance.ResetLog();
         catBehavior.RestartCatPosition();
