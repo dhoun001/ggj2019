@@ -27,6 +27,7 @@ public class MenuFunctions : Singleton<MenuFunctions>
 
     public void LoadMainMenuScene()
     {
+        GameManager.Instance.audioPlayer.Stop();
         SceneManager.LoadScene("MainMenu");
     }
 
