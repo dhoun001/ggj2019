@@ -15,6 +15,7 @@ public class Vase : gridItem
         if (collision.gameObject.name == "cat")
         {
             UIController.Instance.ShowLoseMessage();
+            GetComponent<AudioSource>().Play();
         }
     }
 }
