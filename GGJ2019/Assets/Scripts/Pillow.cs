@@ -16,6 +16,12 @@ public class Pillow : MonoBehaviour
         catSpeed = instance.speed;
     }
 
+    public void ResetObject()
+    {
+        timer = 2f;
+        triggered = false;
+    }
+
     private bool triggered = false;
     void Update()
     {
@@ -49,6 +55,7 @@ public class Pillow : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         instance.speed = catSpeed;
+        ResetObject();
     }
 
 }
