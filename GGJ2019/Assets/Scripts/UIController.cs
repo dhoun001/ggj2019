@@ -72,6 +72,7 @@ public class UIController : Singleton<UIController>
         inLoseState = true;
         GetComponent<AudioSource>().clip = loseAudio;
         GetComponent<AudioSource>().Play();
+        _restartButton.GetComponent<PulseObject>().Pulse();
 
     }
 }
