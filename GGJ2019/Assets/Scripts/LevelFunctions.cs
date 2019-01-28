@@ -21,6 +21,7 @@ public class LevelFunctions : Singleton<LevelFunctions>
 
     public void Restart()
     {
+        catBehavior.angryBub.SetActive(false);
         UIController.Instance.inLoseState = false;
         Inventory.Instance.display.Enable();
         GameManager.Instance.RestartRun();
@@ -38,6 +39,7 @@ public class LevelFunctions : Singleton<LevelFunctions>
 
     public void NextLevel()
     {
+        catBehavior.loveBub.SetActive(false);
         MenuFunctions.Instance.LoadLevel(1);
     }
 }
