@@ -53,6 +53,7 @@ public class UIController : Singleton<UIController>
 
         Fade(0.5f);
         catBehavior.HaltCat();
+        catBehavior.loveBub.gameObject.SetActive(true);
         //TODO: show win messsage
         _messegeLog.text = "Level Complete!";
         //TODO: show next level button, quit to menu button
@@ -68,6 +69,7 @@ public class UIController : Singleton<UIController>
         //TODO: show lose message
         _messegeLog.text = "Uh oh! Press Restart!";
         catBehavior.HaltCat();
+        catBehavior.angryBub.gameObject.SetActive(true);
         //TODO: flash Restart button
         //TODO: at this point, ensure player cannot win level unless they restart
         inLoseState = true;
